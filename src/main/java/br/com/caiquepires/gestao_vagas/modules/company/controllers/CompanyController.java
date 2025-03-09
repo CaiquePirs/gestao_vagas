@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.caiquepires.gestao_vagas.modules.company.entities.CompanyEntity;
 import br.com.caiquepires.gestao_vagas.modules.company.useCase.CreateCompanyUseCase;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/company")
@@ -18,7 +19,7 @@ public class CompanyController {
     private CreateCompanyUseCase createCompanyUseCase;
 
     @PostMapping("/")
-    public ResponseEntity<Object> create(@RequestBody CompanyEntity companyEntity){
+    public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity){
 
         try{
             var result = this.createCompanyUseCase.execute(companyEntity);
